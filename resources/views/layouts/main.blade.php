@@ -12,7 +12,9 @@
         {{-- navigasi --}}
         <link rel="stylesheet" href="css/navigasi.css">
         {{-- icon --}}
-        <link rel="stylesheet" href="css/boxicons.min.css">    
+        {{-- <link rel="stylesheet" href="css/boxicons.min.css">     --}}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+        
     
     {{-- javascript --}}
         {{-- jquery --}}
