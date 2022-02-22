@@ -46,15 +46,45 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     //dashboard
     function dashboard(nama) {
-        // alert(nama);
         $.get("/dashboard",{nama:nama},function (data) {
-            $("#isisidebar").html(data);
+            $(".isisidebar").html(data);
         })
     }
 
-    //pribadi
-    function pribadi() {
-        alert('pribadi');
+    //Files
+    function files() {
+        $.get("/files",{},function (data) {
+            $(".isisidebar").html(data);
+        })
     }
+
+    //Message
+    function message() {
+        $.get("/message",{},function (data) {
+            $(".isisidebar").html(data);
+        })
+    }
+    
+    //Penilaian
+    function penilaian() {
+        $.get("/penilaian",{},function (data) {
+            $(".isisidebar").html(data);
+        })
+    }
+
+    //Users
+    function users() {
+        $.get("/users",{},function (data) {
+            $(".isisidebar").html(data);
+        })
+    }
+    
+    //Bookmark
+    function bookmark() {
+        $.get("/bookmark",{},function (data) {
+            $(".isisidebar").html(data);
+        })
+    }
+
 
     
