@@ -1,3 +1,6 @@
+
+window.onload = dashboard(); //setelah load langsung buka tab dashboard
+
 document.addEventListener("DOMContentLoaded", function(event) {
 
     const showNavbar = (toggleId, navId, bodyId, headerId) =>{
@@ -8,17 +11,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
     
     // Validate that all variables exist
     if(toggle && nav && bodypd && headerpd){
-    toggle.addEventListener('click', ()=>{
-    // show navbar
-    nav.classList.toggle('show')
-    // change icon
-    toggle.classList.toggle('bx-x')
-    // add padding to body
-    bodypd.classList.toggle('body-pd')
-    // add padding to header
-    headerpd.classList.toggle('body-pd')
-    })
-    }
+        toggle.addEventListener('click', ()=>{
+            // show navbar
+            nav.classList.toggle('showsd')
+            // change icon
+            toggle.classList.toggle('bx-x')
+            // add padding to body
+            bodypd.classList.toggle('body-pd')
+            // add padding to header
+            headerpd.classList.toggle('body-pd')
+            })
+        }
     }
     
     showNavbar('header-toggle','nav-bar','body-pd','header')
@@ -27,14 +30,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const linkColor = document.querySelectorAll('.nav_link')
     
     function colorLink(){
-    if(linkColor){
-    linkColor.forEach(l=> l.classList.remove('active'))
-    this.classList.add('active')
+        if(linkColor){
+        linkColor.forEach(l=> l.classList.remove('active'))
+        this.classList.add('active')
+        }
     }
-    }
+    
     linkColor.forEach(l=> l.addEventListener('click', colorLink))
     
-    // Your code to run since DOM is loaded and ready
+    $('#buttonSignOut').on('click',function(){
+        var konfirmasi = confirm('yakin keluar?')
+        if(konfirmasi){
+            window.location.href = "/logout";
+        }
+    })
 });
 
 // Manual Code =====================================================================================
@@ -45,8 +54,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
     //dashboard
-    function dashboard(nama) {
-        $.get("/dashboard",{nama:nama},function (data) {
+    function dashboard() {
+        $.get("/dashboard",{},function (data) {
             $(".isisidebar").html(data);
         })
     }
