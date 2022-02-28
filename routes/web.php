@@ -27,6 +27,12 @@ Route::get('/','homeController@index')->name('index');
 
 // FormLogin ==============================================================
     Route::post('/login','authController@login')->name('login');
+
+    Route::post('/signUp','authController@signUp')->name('signUp');
+
+// cookie
+    Route::get('/cookie/set','cookieController@setCookie');
+    Route::get('/cookie/get','cookieController@getCookie');
     
 
 // session ==============================================================

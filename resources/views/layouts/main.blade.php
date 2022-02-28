@@ -79,7 +79,7 @@
                 </div>
             </div> 
             @if (!session('session_login'))
-                <a href="#" class="nav_link" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Login</span> </a>
+                <a href="#" class="nav_link" data-bs-toggle="modal" data-bs-target="#login"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Login</span> </a>
             @else
                 <a href="#" id="buttonSignOut" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Logout</span> </a>
             @endif
@@ -93,12 +93,12 @@
     <!--Container Main end-->
     
     <div class="container-fluid">
-        <!-- Modal -->
-        <div class="modal fade showfl" id="exampleModal" tabindex="99" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- Modal Login -->
+        <div class="modal fade showfl" id="login" tabindex="99" aria-labelledby="loginLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content showfl">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                    <h5 class="modal-title" id="loginLabel">Login</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -115,9 +115,12 @@
                               <label for="password" class="form-label">Password</label>
                               <input type="password" name="password" class="form-control" id="password">
                             </div>
-                            <div class="mb-3 form-check">
+                            {{-- <div class="mb-3 form-check">
                               <input type="checkbox" class="form-check-input" id="exampleCheck1">
                               <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div> --}}
+                            <div class="mb-3 form-check text-center">
+                              <p>Ingin membuat akun? <a href="#" data-bs-toggle="modal" data-bs-target="#daftar"><span>Daftar</span></a></p>
                             </div>
                             <div class="buttonsubmit text-center">
                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -126,6 +129,54 @@
                     </div>
                 </div>
             </div>
+        </div>
+        
+        {{-- Modal Sign Up --}}
+        <div class="modal fade" id="daftar" tabindex="-1" aria-labelledby="daftarLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="daftarLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                
+                <form action="/signUp" method="post">
+                  @csrf
+
+                  <div class="mb-3">
+                    <label for="nama" class="form-label">Nama Lengkap</label>
+                    <input type="text" name="nama" class="form-control" id="nama">
+                  </div>
+                  <div class="mb-3">
+                    <label for="nip" class="form-label">NIP</label>
+                    <input type="text" name="nip" class="form-control" id="nip">
+                  </div>
+
+                  <hr>
+
+                  <div class="mb-3 text-center">
+                    <div class="form-text">Ingat email dan password dibawah untuk melakukan login!</div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="password">
+                  </div>
+                  <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                    <input type="password" name="confirmPassword" class="form-control" id="confirmPassword">
+                  </div>
+                  <div class="buttonsubmit text-center">
+                    <button type="submit" class="btn btn-primary" id="submitDaftar">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
     
