@@ -38,11 +38,39 @@ document.addEventListener("DOMContentLoaded", function(event) {
     
     linkColor.forEach(l=> l.addEventListener('click', colorLink))
     
+    // Button sign out
     $('#buttonSignOut').on('click',function(){
         var konfirmasi = confirm('yakin keluar?')
         if(konfirmasi){
             window.location.href = "/logout";
         }
+    })
+
+    // button submit tambah kelas
+    $('#submitTambahKelas').on('click',function () {
+
+        $konfirmasi = confirm('Yakin Tambah?');
+
+        if ($konfirmasi) {
+            // AJAX FORM TANPA RELOAD
+            $.ajax({
+                type: "GET",
+                url: "/tambahKelas",    //Masuk controller
+                data: $("#tambahKelasform").serialize(),
+                success: function(data) {
+                    alert('berhasil!');
+
+                    // panggil tampilan kembali agar refresh
+                    $.get("/penilaian",{},function (data) {
+                        $(".isisidebar").html(data);
+                    })
+                },
+                error: function (data) {
+                    alert('gagal!');
+                }
+            })
+        }
+        
     })
 });
 
@@ -63,6 +91,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //Files
     function files() {
         $.get("/files",{},function (data) {
+            $(".isisidebar").html(data);
+        })
+    }
+
+    //about
+    function about() {
+        $.get("/about",{},function (data) {
             $(".isisidebar").html(data);
         })
     }

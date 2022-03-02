@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Kelas;
+
 class homeController extends Controller
 {
     public function index()
@@ -21,6 +23,11 @@ class homeController extends Controller
         return view('contents.files');
     }
 
+    public function about()
+    {
+        return view('contents.about');
+    }
+
     public function message()
     {
         return view('contents.message');
@@ -28,7 +35,9 @@ class homeController extends Controller
 
     public function penilaian(Request $request)
     {
-        return view('contents.penilaian');
+        $kelas = Kelas::all();
+        
+        return view('contents.penilaian',compact('kelas'));
     }
 
     public function bookmark()

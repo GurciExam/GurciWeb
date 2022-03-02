@@ -40,10 +40,16 @@ Route::get('/','homeController@index')->name('index');
     {
         //files
         Route::get('/files','homeController@files')->name('files');
+        //penilaian
+            Route::get('/penilaian','homeController@penilaian')->name('penilaian');
+
+            // TambahKelas
+                Route::get('/tambahKelas','penilaianController@tambahKelas')->name('tambahKelas');
+
+        //about
+        Route::get('/about','homeController@about')->name('about');
         //message
         Route::get('/message','homeController@message')->name('message');
-        //penilaian
-        Route::get('/penilaian','homeController@penilaian')->name('penilaian');
         //bookmark
         Route::get('/bookmark','homeController@bookmark')->name('bookmark');
         //users
