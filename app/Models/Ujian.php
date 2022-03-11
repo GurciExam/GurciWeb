@@ -4,17 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Kelas extends Model
+class Ujian extends Model
 {
-    protected $table = 'Kelas';
+    protected $table = 'Ujian';
 
     public function Guru()
     {
         return $this->belongsTo(Guru::class);
     }
-
-    public function Murid_kelas()
+    
+    public function Kelas()
     {
-        return $this->hasMany(Murid_kelas::class);
+        return $this->belongsTo(Kelas::class);
     }
 }

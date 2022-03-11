@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Kelas extends Model
+class Mata_pelajaran extends Model
 {
-    protected $table = 'Kelas';
+    protected $table = 'Mata_pelajaran';
 
-    public function Guru()
+    public function guru()
     {
-        return $this->belongsTo(Guru::class);
+        return $this->hasMany(Guru::class);
     }
 
     public function Murid_kelas()

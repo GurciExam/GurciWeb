@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Kelas;
+use App\Models\User;
 
 class homeController extends Controller
 {
@@ -35,7 +36,11 @@ class homeController extends Controller
 
     public function penilaian(Request $request)
     {
-        $kelas = Kelas::all();
+        $email = session('data')['email'];
+
+        $idUser = User::where('email',$email)->first()->id;
+
+        $kelas = Kelas::where('guru_id',$idUser)->get();
         
         return view('contents.penilaian',compact('kelas'));
     }

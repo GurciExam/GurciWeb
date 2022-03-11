@@ -189,43 +189,6 @@
           </div>
         </div>
 
-        {{-- Modal Tambah Kelas --}}
-        <div class="modal fade" id="tambahKelas" tabindex="-1" aria-labelledby="tambahKelasLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="tambahKelasLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                
-                <form action="#" method="GET" id="tambahKelasform">
-                  @csrf
-
-                  <div class="form-group mb-3">
-                    <label for="namaKelas" class="form-label">Nama Kelas</label>
-                    <input type="text" name="namaKelas" class="form-control" id="namaKelas">
-                  </div>
-
-                  <div class="form-group mb-3">
-                    <label for="deskripsiKelas">Deskripsi Kelas</label>
-                    <textarea class="form-control" name="deskripsiKelas" id="deskripsiKelas" rows="3"></textarea>
-                  </div>
-
-                  <div class="form-group mb-3">
-                    <label for="kapasitas" class="form-label">Kapasitas</label>
-                    <input type="number" name="kapasitas" class="form-control" id="kapasitas">
-                  </div>
-                  
-                  <div class="buttonsubmit text-center">
-                    <button type="button" class="btn btn-primary" id="submitTambahKelas">Submit</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-
     </div>
     
     {{-- bundle js bootstrap 5 in directory --}}

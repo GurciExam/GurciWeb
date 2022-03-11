@@ -46,6 +46,15 @@ Route::get('/','homeController@index')->name('index');
             // TambahKelas
                 Route::get('/tambahKelas','penilaianController@tambahKelas')->name('tambahKelas');
 
+            // Buka detail Kelas
+                Route::get('/bukaDetailKelas','penilaianController@bukaDetailKelas')->name('bukaDetailKelas');
+
+            // Form Input Soal Soal ujian
+                Route::get('/formSoal','formSoalController@formSoal')->name('formSoal');
+            
+            // Store Soal Soal ujian
+                Route::get('/formSoal/store','formSoalController@storeSoal')->name('storeSoal');
+
         //about
         Route::get('/about','homeController@about')->name('about');
         //message

@@ -1,3 +1,9 @@
 .isisidebar {
     @include 'css/bootstrap.min.css';
 }
+
+.formSoalSoal{
+    overflow: auto;
+    width: 100%;
+    height: 70vh;
+}

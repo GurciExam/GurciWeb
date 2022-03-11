@@ -8,7 +8,7 @@ class Guru extends Model
 {
     protected $table = 'Guru';
 
-    public function user()
+    public function User()
     {
         return $this->belongsTo(User::class);
     }
@@ -16,5 +16,15 @@ class Guru extends Model
     public function kelas()
     {
         return $this->hasMany(Kelas::class);
+    }
+
+    public function Mata_pelajaran()
+    {
+        return $this->hasMany(Mata_pelajaran::class);
+    }
+
+    public function Ujian()
+    {
+        return $this->hasMany(Ujian::class);
     }
 }

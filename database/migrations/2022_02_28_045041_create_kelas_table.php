@@ -15,10 +15,11 @@ class CreateKelasTable extends Migration
     {
         Schema::create('kelas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('guru_id');
             $table->string('namaKelas',25);
             $table->string('kodeKelas',10);
             $table->integer('kapasitas');
-            $table->float('nilaiTerbaik',3,2);
+            $table->text('deskripsiKelas');
             $table->timestamps();
         });
     }

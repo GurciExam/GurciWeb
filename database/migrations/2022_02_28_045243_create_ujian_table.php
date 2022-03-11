@@ -15,11 +15,16 @@ class CreateUjianTable extends Migration
     {
         Schema::create('ujian', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('guru_id');
             $table->foreignId('kelas_id');
-            $table->foreignId('jawabanUjian_id');
-            $table->foreignId('jenisUjian_id');
-            $table->string('namaUjian',25);
-            $table->text('keteranganUjian');
+            $table->string('namaUjian',50);
+            $table->enum('jenisUjian',['ujianBiasa','ujianUTS','ujianUAS']);
+            $table->text('deskripsiUjian');
+            $table->integer('banyakSoal');
+            $table->binary('soalUjian');
+            $table->binary('kunciJawaban');
+            $table->binary('penjelasanKunciJawaban');
+            $table->string('kodeUjian',10);
             $table->timestamps();
         });
     }
