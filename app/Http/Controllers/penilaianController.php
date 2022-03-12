@@ -8,6 +8,9 @@ use App\Models\Kelas;
 use App\Models\User;
 use App\Models\Ujian;
 
+use App\Imports\SiswaImport;
+use Maatwebsite\Excel\Facades\Excel;
+
 use Illuminate\Support\Str;
 
 class penilaianController extends Controller
@@ -36,5 +39,27 @@ class penilaianController extends Controller
         $Ujian = Ujian::where('kelas_id',$idKelas)->get();
 
         return view ('detailKelas.utama',compact('Ujian','idKelas'));
+    }
+
+    public function importSiswaExcel(Request $request)
+    {
+        // validasi
+		$this->validate($request, [
+			'file' => 'required|mimes:csv,xls,xlsx'
+		]);
+
+		// menangkap file excel
+		$file = $request->file('file');
+
+		// membuat nama file unik
+		$nama_file = rand().$file->getClientOriginalName();
+
+		// upload ke folder file_Excel di dalam folder public
+		$file->move('file_Excel',$nama_file);
+
+		// import data
+		Excel::import(new SiswaImport, public_path('/file_Excel/'.$nama_file));
+
+        return redirect('/')->with('succes','berhasil import');
     }
 }

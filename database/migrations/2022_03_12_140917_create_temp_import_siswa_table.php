@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSiswaTable extends Migration
+class CreateTempImportSiswaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateSiswaTable extends Migration
      */
     public function up()
     {
-        Schema::create('siswa', function (Blueprint $table) {
+        Schema::create('temp_import_siswa', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('guru_id');
-            $table->foreignId('kelas_id');
-            $table->binary('dataSiswa');
+            $table->string('namaSiswa',25);
+            $table->string('nis',25)->unique();
+            $table->enum('jenisKelamin',['L','P']);
+            $table->timestamp('tanggalLahir', 0);
+            $table->string('alamat',25);
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateSiswaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('siswa');
+        Schema::dropIfExists('temp_import_siswa');
     }
 }

@@ -43,6 +43,10 @@ Route::get('/','homeController@index')->name('index');
         //penilaian
             Route::get('/penilaian','homeController@penilaian')->name('penilaian');
 
+            // TambahSiswa
+                // Excel
+                Route::post('/tambahSiswa/Excel','penilaianController@importSiswaExcel')->name('importSiswaExcel');
+
             // TambahKelas
                 Route::get('/tambahKelas','penilaianController@tambahKelas')->name('tambahKelas');
 

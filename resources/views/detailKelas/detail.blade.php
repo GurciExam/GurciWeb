@@ -112,34 +112,7 @@
     </div>
 </div>
 
-{{-- Modal Tambah Soal --}}
-{{-- <div class="modal fade" id="tambahSoalform" tabindex="-1" aria-labelledby="tambahSoalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="tambahSoalLabel">Tambah Soal Ujian</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="#" method="GET" id="tambahSoalform">
-                    @csrf
-                    <div class="row">
-                        <div class="col-12">
-
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="buttonsubmit text-center">
-                            <button type="button" class="btn btn-primary" id="#submitSoal">Submit</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> --}}
-
-  <script>
+<script>
     $(document).ready(function() {
 
         $('#fixbanyaksoal').on('click',function () {
@@ -175,4 +148,4 @@
             }
         })
     });
-  </script>
+</script>
