@@ -4,6 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <!-- Bootstrap CSS in directory -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -22,6 +23,8 @@
         <script src="js/jquery-3.6.0.min.js"></script>
         {{-- navigasi --}}
         <script src="js/navigasi.js"></script>
+
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <!-- include summernote css/js -->
         <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">

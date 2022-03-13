@@ -30,13 +30,15 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="/tambahSiswa/Excel" method="POST" enctype="multipart/form-data" id="formImportSiswaExcel">
+        <form action="javascript:void(0)" method="POST" enctype="multipart/form-data" id="formImportSiswaExcel">
           @csrf
+          {{-- <input type="text" name="_token" value="{{ csrf_token() }}" hidden> --}}
+
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Masukkan Data Excel</label>
           </div>
           <div class="mb-3">
-            <input type="file" name="file" required="required">
+            <input id="file" type="file" name="file" required="required">
           </div>
           <button type="submit" id="submitImportExcel" class="btn btn-primary">Submit</button>
         </form>
@@ -50,29 +52,36 @@
 </div>
 
 <script>
-  // $('#submitImportExcel').on('click',function () {
-  //     $konfirmasi = confirm('Yakin Import?');
+ $.ajaxSetup({
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+  });
 
-  //     if ($konfirmasi) {
-  //         // AJAX FORM TANPA RELOAD
-  //         $.ajax({
-  //             type: "POST",
-  //             url: "{{route('importSiswaExcel')}}",    //Masuk controller
-  //             data: $("#formImportSiswaExcel").serialize(),
-  //             success: function(data) {
-  //                 alert('berhasil!');
+  $('#formImportSiswaExcel').submit(function (e) {
 
-  //                 // $('#buttonformtambahSoal').click();
+    $konfirmasi = confirm('Yakin Import?');
+    
+    if ($konfirmasi) {
+      // AJAX FORM TANPA RELOAD
+          e.preventDefault();
+      
+          var formData = new FormData(this);
 
-  //                 // // panggil tampilan kembali agar refresh
-  //                 // $.get("/penilaian",{},function (data) {
-  //                 //     $(".isisidebar").html(data);
-  //                 // })
-  //             },
-  //             error: function (data) {
-  //                 alert('gagal!');
-  //             }
-  //         })
-  //     }
-  // })
+          $.ajax({
+            type: "POST",
+            url: "{{ route('importSiswaExcel') }}",    //Masuk controller
+            data: formData,
+            cache:false,
+            contentType: false,
+            processData: false,
+              success: function(data) {
+                  alert('berhasil!');
+              },
+              error: function (data) {
+                  alert('gagal!');
+              }
+          })
+      }
+  })
 </script>

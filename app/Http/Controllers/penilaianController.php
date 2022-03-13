@@ -60,6 +60,6 @@ class penilaianController extends Controller
 		// import data
 		Excel::import(new SiswaImport, public_path('/file_Excel/'.$nama_file));
 
-        return redirect('/')->with('succes','berhasil import');
+        // return redirect('/')->with('success','berhasil import');
     }
 }
