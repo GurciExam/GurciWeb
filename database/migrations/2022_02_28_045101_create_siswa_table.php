@@ -17,7 +17,11 @@ class CreateSiswaTable extends Migration
             $table->id();
             $table->foreignId('guru_id');
             $table->foreignId('kelas_id');
-            $table->binary('dataSiswa');
+            $table->string('namaSiswa',25);
+            $table->string('nis',25);
+            $table->enum('jenisKelamin',['L','P']);
+            $table->timestamp('tanggalLahir', 0);
+            $table->string('alamat',25);
             $table->timestamps();
         });
     }

@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-3">
             <div class="row">
                 {{-- <h3>List Kelas</h3> --}}
             </div>
@@ -44,7 +44,7 @@
                   </div>
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-9">
             <div id="detailKelas"></div>
         </div>
     </div>

@@ -46,6 +46,9 @@ Route::get('/','homeController@index')->name('index');
             // TambahSiswa
                 // Excel
                 Route::post('/tambahSiswa/Excel','penilaianController@importSiswaExcel')->name('importSiswaExcel');
+                
+                // Satuan
+                Route::post('/tambahSiswa/Satuan','penilaianController@tambahSiswaSatuan')->name('importSiswaSatuan');
 
             // TambahKelas
                 Route::get('/tambahKelas','penilaianController@tambahKelas')->name('tambahKelas');
