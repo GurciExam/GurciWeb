@@ -99,7 +99,7 @@
             // AJAX FORM TANPA RELOAD
             $.ajax({
                 type: "GET",
-                url: "/tambahKelas",    //Masuk controller
+                url: "{{ route('tambahKelas') }}",    //Masuk controller
                 data: $("#tambahKelasform").serialize(),
                 success: function(data) {
                     alert('berhasil!');
@@ -107,7 +107,7 @@
                     $('#buttonTambahKelas').click();
 
                     // panggil tampilan kembali agar refresh
-                    $.get("/penilaian",{},function (data) {
+                    $.get("{{ route('penilaian') }}",{},function (data) {
                         $(".isisidebar").html(data);
                     })
                 },
@@ -120,7 +120,7 @@
     })
 
     function bukaDetailKelas(params) {
-        $.get("/bukaDetailKelas",{params:params},function (data) {
+        $.get("{{ route('bukaDetailKelas') }}",{params:params},function (data) {
             $("#detailKelas").html(data);
         })
     }

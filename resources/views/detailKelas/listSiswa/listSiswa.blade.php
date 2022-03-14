@@ -13,10 +13,11 @@
     </button>
   </div>
 </div>
-<div class="row">
+<div class="row mt-3">
+  <div class="col-md-3">
     <div class="list-group">
       @foreach ($Siswa as $item)
-        <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+        <button type="button" onclick="detailSiswa({{$item['id']}})" class="list-group-item list-group-item-action active" aria-current="true">
           {{$item['namaSiswa']}}
         </button>
       @endforeach
@@ -24,7 +25,12 @@
         <button type="button" class="list-group-item list-group-item-action">A third button item</button>
         <button type="button" class="list-group-item list-group-item-action">A fourth button item</button>
         <button type="button" class="list-group-item list-group-item-action" disabled>A disabled button item</button> --}}
-      </div>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <div id="detailSiswa"></div>
+  </div>
+    
 </div>
 
 <!-- Modal Tambah Siswa dari Excel -->
@@ -123,13 +129,24 @@
   </div>
 </div>
 
-<script>
-  $.ajaxSetup({
-      headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-  });
 
+
+<script>
+
+  
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  
+  function detailSiswa(params) {
+    $.get("{{ route('detailSiswa') }}",{params:params},function (data) {
+      $('#detailSiswa').html(data);
+    })
+  }
+
+  // import excel
   $('#formImportSiswaExcel').submit(function (e) {
 
     $konfirmasi = confirm('Yakin Import?');
@@ -153,7 +170,7 @@
                 $('#tambahSiswa').click();
 
                 // panggil tampilan kembali agar refresh
-                $.get("/penilaian",{},function (data) {
+                $.get("{{ route('penilaian') }}",{},function (data) {
                     $(".isisidebar").html(data);
                 })
 
@@ -165,6 +182,7 @@
       }
   })
 
+  // import siswa satuan
   $('#formImportSiswaSatuan').submit(function(e){
 
     $konfirmasi = confirm('Yakin Tambah?');
@@ -182,19 +200,19 @@
         url: "{{ route('importSiswaSatuan') }}",
         data: $('#formImportSiswaSatuan').serialize(),
         success: function(data) {
-            alert('berhasil tambah Siswa!');
-            $('#tambahSiswaSatuan').click();
+          alert('berhasil tambah Siswa!');
+          $('#tambahSiswaSatuan').click();
 
-            // panggil tampilan kembali agar refresh
-            $.get("/penilaian",{},function (data) {
-                $(".isisidebar").html(data);
-            })
-          },
-          error: function (data) {
-            alert('Isilah dengan lengkap!');
-          }
-        })
-      }
-    })
+          // panggil tampilan kembali agar refresh
+          $.get("{{ route('penilaian') }}",{},function (data) {
+              $(".isisidebar").html(data);
+          })
+        },
+        error: function (data) {
+          alert('Isilah dengan lengkap!');
+        }
+      })
+    }
+  })
 
 </script>

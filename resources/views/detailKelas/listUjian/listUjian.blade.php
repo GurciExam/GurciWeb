@@ -11,16 +11,21 @@
 </div>
 <div class="row">
     <div class="row">
-        <div class="list-group">
-            @foreach ($Ujian as $item)
-                <button type="button" class="list-group-item list-group-item-action active" aria-current="true">{{$item['namaUjian']}}</button>
-                
-            @endforeach
+        <div class="col-md-3">
+            <div class="list-group">
+                @foreach ($Ujian as $item)
+                    <button type="button" onclick="detailUjian({{$item['id']}})" class="list-group-item list-group-item-action active" aria-current="true">{{$item['namaUjian']}}</button>
 
-            {{-- <button type="button" class="list-group-item list-group-item-action">A second item</button>
-            <button type="button" class="list-group-item list-group-item-action">A third button item</button>
-            <button type="button" class="list-group-item list-group-item-action">A fourth button item</button>
-            <button type="button" class="list-group-item list-group-item-action" disabled>A disabled button item</button> --}}
+                @endforeach
+
+                {{-- <button type="button" class="list-group-item list-group-item-action">A second item</button>
+                <button type="button" class="list-group-item list-group-item-action">A third button item</button>
+                <button type="button" class="list-group-item list-group-item-action">A fourth button item</button>
+                <button type="button" class="list-group-item list-group-item-action" disabled>A disabled button item</button> --}}
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div id="detailUjian"></div>
         </div>
     </div>
 </div>
@@ -113,8 +118,16 @@
 </div>
 
 <script>
-    $(document).ready(function() {
 
+    function detailUjian(params) {
+        $.get("{{ route('detailUjian') }}",{params:params},function (data) {
+            $('#detailUjian').html(data);
+        })
+    }
+
+
+    $(document).ready(function() {
+        
         $('#fixbanyaksoal').on('click',function () {
             let bs = $('#banyakSoal').val();
             $.get("{{route('formSoal')}}",{bs:bs}, function(data){
@@ -129,7 +142,7 @@
                 // AJAX FORM TANPA RELOAD
                 $.ajax({
                     type: "GET",
-                    url: "/formSoal/store",    //Masuk controller
+                    url: "{{ route('storeSoal') }}",    //Masuk controller
                     data: $("#formtambahUjian").serialize(),
                     success: function(data) {
                         alert('berhasil!');
@@ -137,7 +150,7 @@
                         $('#buttonformtambahSoal').click();
 
                         // panggil tampilan kembali agar refresh
-                        $.get("/penilaian",{},function (data) {
+                        $.get("{{ route('penilaian') }}",{},function (data) {
                             $(".isisidebar").html(data);
                         })
                     },

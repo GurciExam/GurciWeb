@@ -10,7 +10,7 @@ use App\Models\User;
 
 use Illuminate\Support\Str;
 
-class formSoalController extends Controller
+class ujianController extends Controller
 {
     public function formSoal(Request $request)
     {
@@ -43,5 +43,14 @@ class formSoalController extends Controller
 
         $tambahUjian->kodeUjian = Str::random(5);
         $tambahUjian->save();
+    }
+
+    public function detailUjian(Request $request)
+    {
+        $idUjian = $request->params;
+
+        $ujian = Ujian::find($idUjian);
+
+        return view('detailKelas.listUjian.detailUjian', compact('ujian'));
     }
 }

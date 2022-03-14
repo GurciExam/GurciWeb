@@ -42,25 +42,33 @@ Route::get('/','homeController@index')->name('index');
         Route::get('/files','homeController@files')->name('files');
         //penilaian
             Route::get('/penilaian','homeController@penilaian')->name('penilaian');
+            // SISWA
+                // TambahSiswa
+                    // Excel
+                    Route::post('siswa/tambahSiswa/Excel','siswaController@importSiswaExcel')->name('importSiswaExcel');
+                    
+                    // Satuan
+                    Route::post('siswa/tambahSiswa/Satuan','siswaController@tambahSiswaSatuan')->name('importSiswaSatuan');
 
-            // TambahSiswa
-                // Excel
-                Route::post('/tambahSiswa/Excel','penilaianController@importSiswaExcel')->name('importSiswaExcel');
+                // DetailSiswa
+                Route::get('siswa/detailSiswa','siswaController@detailSiswa')->name('detailSiswa');
+
+            // KELAS
+                // TambahKelas
+                    Route::get('/tambahKelas','penilaianController@tambahKelas')->name('tambahKelas');
+
+                // Buka detail Kelas
+                    Route::get('/bukaDetailKelas','penilaianController@bukaDetailKelas')->name('bukaDetailKelas');
+
+            // UJIAN
+                // Form Input Soal Soal ujian
+                    Route::get('ujian/formSoal','ujianController@formSoal')->name('formSoal');
                 
-                // Satuan
-                Route::post('/tambahSiswa/Satuan','penilaianController@tambahSiswaSatuan')->name('importSiswaSatuan');
+                // Store Soal Soal ujian
+                    Route::get('ujian/formSoal/store','ujianController@storeSoal')->name('storeSoal');
 
-            // TambahKelas
-                Route::get('/tambahKelas','penilaianController@tambahKelas')->name('tambahKelas');
-
-            // Buka detail Kelas
-                Route::get('/bukaDetailKelas','penilaianController@bukaDetailKelas')->name('bukaDetailKelas');
-
-            // Form Input Soal Soal ujian
-                Route::get('/formSoal','formSoalController@formSoal')->name('formSoal');
-            
-            // Store Soal Soal ujian
-                Route::get('/formSoal/store','formSoalController@storeSoal')->name('storeSoal');
+                // DetailSiswa
+                Route::get('ujian/detailUjian','ujianController@detailUjian')->name('detailUjian');
 
         //about
         Route::get('/about','homeController@about')->name('about');
