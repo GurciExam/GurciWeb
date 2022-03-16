@@ -7,12 +7,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <!-- Bootstrap CSS in directory -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     
     {{-- css --}}
         {{-- navigasi --}}
-        <link rel="stylesheet" href="css/navigasi.css">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="/css/navigasi.css">
+        <link rel="stylesheet" href="/css/style.css">
         {{-- icon --}}
         {{-- <link rel="stylesheet" href="css/boxicons.min.css">     --}}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
@@ -20,15 +20,15 @@
     
     {{-- javascript --}}
         {{-- jquery --}}
-        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="/js/jquery-3.6.0.min.js"></script>
         {{-- navigasi --}}
-        <script src="js/navigasi.js"></script>
+        <script src="/js/navigasi.js"></script>
 
         <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    <!-- include summernote css/js -->
-        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    {{-- summernote library --}}
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
 
     <title>Gurci Examp</title>
@@ -84,9 +84,9 @@
                     <a href="#" onclick="dashboard('ridho')" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a> 
                     <a href="#" onclick="penilaian('ridho')" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Penilaian</span> </a> 
                     <a href="#" onclick="about('ridho')" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">About Us</span> </a> 
-                    {{-- <a href="#" onclick="message('ridho')" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Messages</span> </a> 
+                    <a href="#" onclick="message('ridho')" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Messages</span> </a> 
                     <a href="#" onclick="dashboard('ridho')" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a> 
-                    <a href="#" onclick="users('ridho')" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a>  --}}
+                    <a href="#" onclick="users('ridho')" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a> 
                 </div>
             </div> 
             @if (!session('session_login'))
@@ -195,8 +195,8 @@
     </div>
     
     {{-- bundle js bootstrap 5 in directory --}}
-    <script src="js/bootstrap.bundle.min.js" rel="stylesheet"></script>
-
+    <script src="/js/bootstrap.bundle.min.js" rel="stylesheet"></script>
+    
   </body>
 
 

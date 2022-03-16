@@ -16,7 +16,6 @@ class CreateNilaiTable extends Migration
         Schema::create('nilai', function (Blueprint $table) {
             $table->id();
             $table->foreignId('siswa_id');
-            $table->foreignId('mataPelajaran_id');
             $table->foreignId('ujian_id');
             $table->float('nilai',3,2);
             $table->timestamps();

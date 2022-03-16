@@ -140,6 +140,7 @@
     }
   });
   
+  // buka data siswa
   function detailSiswa(params) {
     $.get("{{ route('detailSiswa') }}",{params:params},function (data) {
       $('#detailSiswa').html(data);
@@ -167,12 +168,11 @@
               success: function(data) {
                 alert('berhasil Import Excel!');
                 
+                // tutup modal
                 $('#tambahSiswa').click();
 
-                // panggil tampilan kembali agar refresh
-                $.get("{{ route('penilaian') }}",{},function (data) {
-                    $(".isisidebar").html(data);
-                })
+                //panggil tab agar ter refresh
+                bukaDetailKelas($('input[name=idKelas]').val());
 
               },
               error: function (data) {
@@ -193,20 +193,18 @@
 
       var formData = new FormData(this);
 
-      console.log(formData);
-
       $.ajax({
         type: 'POST',
         url: "{{ route('importSiswaSatuan') }}",
         data: $('#formImportSiswaSatuan').serialize(),
         success: function(data) {
           alert('berhasil tambah Siswa!');
+
+          // tutup modal
           $('#tambahSiswaSatuan').click();
 
-          // panggil tampilan kembali agar refresh
-          $.get("{{ route('penilaian') }}",{},function (data) {
-              $(".isisidebar").html(data);
-          })
+          //panggil tab agar ter refresh
+          bukaDetailKelas($('input[name=idKelas]').val());
         },
         error: function (data) {
           alert('Isilah dengan lengkap!');

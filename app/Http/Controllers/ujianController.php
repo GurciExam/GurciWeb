@@ -36,9 +36,9 @@ class ujianController extends Controller
         $tambahUjian->deskripsiUjian = $request->deskripsiUjian;
         $tambahUjian->banyakSoal = $request->banyakSoal;
 
-        $tambahUjian->soalUjian = serialize($pilihan);
-        $tambahUjian->kunciJawaban = serialize($soalUjian);
-        $tambahUjian->penjelasanKunciJawaban = serialize($deskripsiJawaban);
+        $tambahUjian->soalUjian                 = serialize($soalUjian);
+        $tambahUjian->kunciJawaban              = serialize($pilihan);
+        $tambahUjian->penjelasanKunciJawaban    = serialize($deskripsiJawaban);
 
 
         $tambahUjian->kodeUjian = Str::random(5);
@@ -51,6 +51,10 @@ class ujianController extends Controller
 
         $ujian = Ujian::find($idUjian);
 
-        return view('detailKelas.listUjian.detailUjian', compact('ujian'));
+        $soalUjian              = unserialize($ujian->soalUjian);
+        $kunciJawaban           = unserialize($ujian->kunciJawaban);
+        $penjelasanKunciJawaban = unserialize($ujian->penjelasanKunciJawaban);
+
+        return view('detailKelas.listUjian.detailUjian', compact('ujian','soalUjian','kunciJawaban','penjelasanKunciJawaban'));
     }
 }

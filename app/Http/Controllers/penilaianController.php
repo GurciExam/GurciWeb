@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Siswa;
 use App\Models\Ujian;
 
+use Illuminate\Support\Str;
 
 class penilaianController extends Controller
 {
@@ -29,9 +30,7 @@ class penilaianController extends Controller
 
     public function bukaDetailKelas(Request $request)   
     {
-        $kodeKelas = $request->params;
-
-        $idKelas = Kelas::where('kodeKelas',"$kodeKelas")->first()->id;
+        $idKelas = $request->params;
 
         // tab siswa
         $Siswa = Siswa::where('kelas_id',$idKelas)->get();

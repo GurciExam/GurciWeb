@@ -35,7 +35,7 @@
             <div class="form-group mb-3">
                 <label for="summernote">Soal</label>
                 <div class="textarea" style="background-color: white; color:black; margin-bottom:30px;">
-                    <textarea class="summernoteSoal" name="soalUjian[{{$i}}]"></textarea>
+                    <textarea class="summernoteSoal" id="summernote" name="soalUjian[{{$i}}]"></textarea>
                 </div>
             </div>
         
@@ -61,6 +61,37 @@
             tabsize: 2,
             height: 100
         });
+
+        $('#summernote').summernote({
+            height: ($(window).height() - 300),
+            callbacks: {
+                onImageUpload: function(image) {
+                    uploadImage(image[0]);
+                }
+            }
+        });
+
+        function uploadImage(image) {
+            var data = new FormData();
+            data.append("image", image);
+            $.ajax({
+                url: 'Your url to deal with your image',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: data,
+                type: "post",
+                success: function(url) {
+                    alert('berhasil');
+                    var image = $('<img>').attr('src', 'http://' + url);
+                    $('#summernote').summernote("insertNode", image[0]);
+                },
+                error: function(data) {
+                    alert('gagal');
+                    console.log(data);
+                }
+            });
+        }
     </script>
 @endfor
 

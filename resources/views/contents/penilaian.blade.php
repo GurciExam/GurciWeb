@@ -31,7 +31,7 @@
                 <div class="list-group">
 
                     @foreach ($kelas as $item)
-                        <a href="#" onclick="bukaDetailKelas('{{$item['kodeKelas']}}')" class="list-group-item list-group-item-action" aria-current="true">
+                        <a href="#" onclick="bukaDetailKelas('{{$item['id']}}')" class="list-group-item list-group-item-action" aria-current="true">
                             <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">{{$item['namaKelas']}}</h5>
                             <small>Kode : {{$item['kodeKelas']}}</small>

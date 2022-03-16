@@ -41,7 +41,7 @@ Route::get('/','homeController@index')->name('index');
         //files
         Route::get('/files','homeController@files')->name('files');
         //penilaian
-            Route::get('/penilaian','homeController@penilaian')->name('penilaian');
+        Route::get('/penilaian','homeController@penilaian')->name('penilaian');
             // SISWA
                 // TambahSiswa
                     // Excel

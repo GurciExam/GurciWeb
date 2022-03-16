@@ -125,7 +125,6 @@
         })
     }
 
-
     $(document).ready(function() {
         
         $('#fixbanyaksoal').on('click',function () {
@@ -147,12 +146,15 @@
                     success: function(data) {
                         alert('berhasil!');
 
+                        // tutup modal
                         $('#buttonformtambahSoal').click();
 
-                        // panggil tampilan kembali agar refresh
-                        $.get("{{ route('penilaian') }}",{},function (data) {
-                            $(".isisidebar").html(data);
-                        })
+                        //panggil tab agar ter refresh
+                        bukaDetailKelas($('input[name=idKelas]').val());
+                        
+                        // buka tab
+                        $('#tabListUjian').click();
+
                     },
                     error: function (data) {
                         alert('gagal!');
