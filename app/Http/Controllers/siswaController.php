@@ -98,4 +98,22 @@ class siswaController extends Controller
 
         return view('detailKelas.listSiswa.detailSiswa', compact('siswa'));
     }
+
+    public function ubahSiswa(Request $request)
+    {
+        $id = $request->idSiswaUbah;
+        $ubahSiswa = Siswa::find($id);
+        $ubahSiswa->namaSiswa    = $request->namaSiswaUbah;
+        $ubahSiswa->nis          = $request->nisUbah;
+        $ubahSiswa->jenisKelamin = $request->jenisKelaminUbah; 
+        $ubahSiswa->tanggalLahir = $request->tanggalLahirUbah;
+        $ubahSiswa->alamat       = $request->alamatUbah;
+        $ubahSiswa->save();
+
+    }
+
+    public function hapusSiswa(Request $request)
+    {
+        Siswa::find($request->id)->delete();
+    }
 }

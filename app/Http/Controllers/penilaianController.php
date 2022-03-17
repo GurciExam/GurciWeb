@@ -28,6 +28,25 @@ class penilaianController extends Controller
         $tambahKelas->save();
     }
 
+    public function ubahKelas(Request $request)
+    {
+        $id         = $request->idUbah;
+        $namaKelas  = $request->namaKelasUbah;
+        $deskripsi  = $request->deskripsiKelasUbah;
+        $kapasitas  = $request->kapasitasUbah;
+
+        $ubah = Kelas::find($id);
+        $ubah->namaKelas      = $namaKelas;
+        $ubah->deskripsiKelas = $deskripsi;
+        $ubah->kapasitas      = $kapasitas;
+        $ubah->save();
+    }
+
+    public function hapusKelas(Request $request)
+    {
+        Kelas::find($request->id)->delete();
+    }
+
     public function bukaDetailKelas(Request $request)   
     {
         $idKelas = $request->params;
@@ -37,6 +56,9 @@ class penilaianController extends Controller
 
         // tab ujian
         $Ujian = Ujian::where('kelas_id',$idKelas)->get();
+
+        // tab rekapitulasi
+        
 
         return view ('detailKelas.utama',compact('Ujian','idKelas','Siswa'));
     }

@@ -45,20 +45,32 @@ Route::get('/','homeController@index')->name('index');
             // SISWA
                 // TambahSiswa
                     // Excel
-                    Route::post('siswa/tambahSiswa/Excel','siswaController@importSiswaExcel')->name('importSiswaExcel');
+                    Route::post('siswa/tambah/Excel','siswaController@importSiswaExcel')->name('importSiswaExcel');
                     
                     // Satuan
-                    Route::post('siswa/tambahSiswa/Satuan','siswaController@tambahSiswaSatuan')->name('importSiswaSatuan');
+                    Route::post('siswa/tambah/Satuan','siswaController@tambahSiswaSatuan')->name('importSiswaSatuan');
 
                 // DetailSiswa
-                Route::get('siswa/detailSiswa','siswaController@detailSiswa')->name('detailSiswa');
+                Route::get('siswa/detail','siswaController@detailSiswa')->name('detailSiswa');
+
+                // UbahSiswa
+                Route::put('siswa/ubah','siswaController@ubahSiswa')->name('ubahSiswa');
+
+                // HapusSiswa
+                Route::post('siswa/hapus','siswaController@hapusSiswa')->name('hapusSiswa');
 
             // KELAS
                 // TambahKelas
-                    Route::get('/tambahKelas','penilaianController@tambahKelas')->name('tambahKelas');
+                    Route::get('/kelas/tambah','penilaianController@tambahKelas')->name('tambahKelas');
+
+                // UbahKelas
+                    Route::put('/kelas/ubah','penilaianController@ubahKelas')->name('ubahKelas');
+
+                // HapusKelas
+                    Route::post('/kelas/hapus','penilaianController@hapusKelas')->name('hapusKelas');
 
                 // Buka detail Kelas
-                    Route::get('/bukaDetailKelas','penilaianController@bukaDetailKelas')->name('bukaDetailKelas');
+                    Route::get('/kelas/detail','penilaianController@bukaDetailKelas')->name('bukaDetailKelas');
 
             // UJIAN
                 // Form Input Soal Soal ujian

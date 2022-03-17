@@ -1,7 +1,8 @@
-<div class="row">
+<div class="row mt-2">
     <h1 class="text-center">List Ujian</h1>
 </div>
-<div class="row">
+
+<div class="row mb-3">
     <div class="col">
         <!-- Button trigger modal -->
         <button type="button" id="buttonformtambahSoal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahUjianform">
@@ -9,24 +10,23 @@
         </button> 
     </div>
 </div>
+
 <div class="row">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="list-group">
-                @foreach ($Ujian as $item)
-                    <button type="button" onclick="detailUjian({{$item['id']}})" class="list-group-item list-group-item-action active" aria-current="true">{{$item['namaUjian']}}</button>
+    <div class="col-md-3">
+        <div class="list-group">
+            @foreach ($Ujian as $item)
+                <button type="button" onclick="detailUjian({{$item['id']}})" class="list-group-item list-group-item-action active" aria-current="true">{{$item['namaUjian']}}</button>
 
-                @endforeach
+            @endforeach
 
-                {{-- <button type="button" class="list-group-item list-group-item-action">A second item</button>
-                <button type="button" class="list-group-item list-group-item-action">A third button item</button>
-                <button type="button" class="list-group-item list-group-item-action">A fourth button item</button>
-                <button type="button" class="list-group-item list-group-item-action" disabled>A disabled button item</button> --}}
-            </div>
+            {{-- <button type="button" class="list-group-item list-group-item-action">A second item</button>
+            <button type="button" class="list-group-item list-group-item-action">A third button item</button>
+            <button type="button" class="list-group-item list-group-item-action">A fourth button item</button>
+            <button type="button" class="list-group-item list-group-item-action" disabled>A disabled button item</button> --}}
         </div>
-        <div class="col-md-9">
-            <div id="detailUjian"></div>
-        </div>
+    </div>
+    <div class="col-md-9">
+        <div id="detailUjian"></div>
     </div>
 </div>
 

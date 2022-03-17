@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="boxIsi p-3" style="border: solid 1px black">
+    <div class="boxIsi p-3 mb-5" style="border: solid 1px black">
         <div class="row">
             <div class="col-4">
                 <h5>Nama : {{$ujian['namaUjian']}}</h5>
@@ -21,25 +21,32 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-4">
+                <input type="text" class="form-control" id="search" placeholder="search..">
+            </div>
             <div class="col">
+                <button type="submit" class="btn btn-primary mb-2">Cari</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="listSoalSoal">
 
-                @for ($i = 0; $i < count($soalUjian); $i++)
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Soal {{$i+1}}</h5>
-                            <p>Soal Ujian :</p>
-                            {!! htmlspecialchars_decode(stripslashes($soalUjian[$i])) !!}
-                            <p>Kunci Jawaban :</p>
-                            <h3>{{$kunciJawaban[$i]}}</h3>
-                            <p>Penjelasan :</p>
-                            {!! htmlspecialchars_decode(stripslashes($penjelasanKunciJawaban[$i])) !!}
+                    @for ($i = 0; $i < count($soalUjian); $i++)
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Soal {{$i+1}}</h5>
+                                <p>Soal Ujian :</p>
+                                {!! htmlspecialchars_decode(stripslashes($soalUjian[$i])) !!}
+                                <p>Kunci Jawaban :</p>
+                                <h3>{{$kunciJawaban[$i]}}</h3>
+                                <p>Penjelasan :</p>
+                                {!! htmlspecialchars_decode(stripslashes($penjelasanKunciJawaban[$i])) !!}
+                            </div>
                         </div>
-                    </div>
 
-                    
-                    
-                    
-                @endfor
+                    @endfor
+                </div>
             </div>
         </div>
     </div>

@@ -82,11 +82,11 @@
             <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">Gurci Examp</span> </a>
                 <div class="nav_list"> 
                     <a href="#" onclick="dashboard('ridho')" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a> 
-                    <a href="#" onclick="penilaian('ridho')" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Penilaian</span> </a> 
+                    <a href="#" id="tabpenilaian" onclick="penilaian('ridho')" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Penilaian</span> </a> 
                     <a href="#" onclick="about('ridho')" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">About Us</span> </a> 
-                    <a href="#" onclick="message('ridho')" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Messages</span> </a> 
+                    {{-- <a href="#" onclick="message('ridho')" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Messages</span> </a> 
                     <a href="#" onclick="dashboard('ridho')" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a> 
-                    <a href="#" onclick="users('ridho')" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a> 
+                    <a href="#" onclick="users('ridho')" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a>  --}}
                 </div>
             </div> 
             @if (!session('session_login'))

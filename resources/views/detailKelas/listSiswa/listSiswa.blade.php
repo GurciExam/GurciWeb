@@ -1,5 +1,5 @@
 <div class="row">
-    <h1 class="text-center">Ini adalah List Siswa</h1>
+    <h1 class="text-center mt-2">List Siswa</h1>
 </div>
 <div class="row">
   <div class="col">
