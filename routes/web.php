@@ -74,13 +74,22 @@ Route::get('/','homeController@index')->name('index');
 
             // UJIAN
                 // Form Input Soal Soal ujian
-                    Route::get('ujian/formSoal','ujianController@formSoal')->name('formSoal');
+                    Route::get('ujian/formSoal','ujianController@formInputSoal')->name('formSoal');
                 
                 // Store Soal Soal ujian
                     Route::get('ujian/formSoal/store','ujianController@storeSoal')->name('storeSoal');
+                    
+                // Form Ubah Soal Soal ujian
+                    Route::get('ujian/formSoal/ubah','ujianController@formEditSoal')->name('formSoalUbah');
+                
+                // Store Ubah Soal Soal ujian
+                    Route::put('ujian/formSoal/ubah/store','ujianController@storeUbahSoal')->name('storeUbahSoal');
 
-                // DetailSiswa
-                Route::get('ujian/detailUjian','ujianController@detailUjian')->name('detailUjian');
+                // DetailUjian
+                    Route::get('ujian/detailUjian','ujianController@detailUjian')->name('detailUjian');
+                
+                // HapusUjian
+                    Route::post('ujian/hapusUjian','ujianController@hapusUjian')->name('hapusUjian');
 
         //about
         Route::get('/about','homeController@about')->name('about');

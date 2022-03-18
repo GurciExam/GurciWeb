@@ -12,10 +12,28 @@ use Illuminate\Support\Str;
 
 class ujianController extends Controller
 {
-    public function formSoal(Request $request)
+    public function formInputSoal(Request $request)
     {
         $banyakSoal = $request->bs;
-        return view('contents.InputSoal',compact('banyakSoal'));
+        
+        return view('detailKelas.listUjian.FormInputSoal',compact('banyakSoal'));
+    }
+
+    public function formEditSoal(Request $request)
+    {
+        $banyakSoal = $request->bs;
+
+        $id = $request->id;
+
+        $ujian = Ujian::find($id);
+
+        $namaUjian = $ujian->namaUjian;
+
+        $pilihanUbah            = unserialize($ujian->kunciJawaban);
+        $soalUjianUbah          = unserialize($ujian->soalUjian);
+        $deskripsiJawabanUbah   = unserialize($ujian->penjelasanKunciJawaban);
+
+        return view('detailKelas.listUjian.FormEditSoal',compact('banyakSoal','id','pilihanUbah','soalUjianUbah','deskripsiJawabanUbah','namaUjian'));
     }
 
     public function storeSoal(Request $request)
@@ -23,10 +41,6 @@ class ujianController extends Controller
         $email = session('data')['email'];
 
         $idUser = User::where('email',$email)->first()->id;
-        
-        $pilihan = $request->pilihan;
-        $soalUjian = $request->soalUjian;
-        $deskripsiJawaban = $request->deskripsiJawaban;
 
         $tambahUjian = new Ujian;
         $tambahUjian->guru_id = $idUser;
@@ -36,12 +50,30 @@ class ujianController extends Controller
         $tambahUjian->deskripsiUjian = $request->deskripsiUjian;
         $tambahUjian->banyakSoal = $request->banyakSoal;
 
-        $tambahUjian->soalUjian                 = serialize($soalUjian);
-        $tambahUjian->kunciJawaban              = serialize($pilihan);
-        $tambahUjian->penjelasanKunciJawaban    = serialize($deskripsiJawaban);
+        $tambahUjian->soalUjian                 = serialize($request->soalUjian);
+        $tambahUjian->kunciJawaban              = serialize($request->pilihan);
+        $tambahUjian->penjelasanKunciJawaban    = serialize($request->deskripsiJawaban);
 
 
         $tambahUjian->kodeUjian = Str::random(5);
+        $tambahUjian->save();
+    }
+
+    public function storeUbahSoal(Request $request)
+    {
+
+        $id = $request->idUjianUbah;
+
+        $tambahUjian = Ujian::find($id);
+        $tambahUjian->namaUjian = $request->namaUjianUbah;
+        $tambahUjian->jenisUjian = $request->jenisUjianUbah;
+        $tambahUjian->deskripsiUjian = $request->deskripsiUjianUbah;
+        $tambahUjian->banyakSoal = $request->banyakSoalUbah;
+
+        $tambahUjian->soalUjian                 = serialize($request->soalUjian);
+        $tambahUjian->kunciJawaban              = serialize($request->pilihan);
+        $tambahUjian->penjelasanKunciJawaban    = serialize($request->deskripsiJawaban);
+
         $tambahUjian->save();
     }
 
@@ -56,5 +88,10 @@ class ujianController extends Controller
         $penjelasanKunciJawaban = unserialize($ujian->penjelasanKunciJawaban);
 
         return view('detailKelas.listUjian.detailUjian', compact('ujian','soalUjian','kunciJawaban','penjelasanKunciJawaban'));
+    }
+
+    public function hapusUjian(Request $request)
+    {
+        Ujian::find($request->id)->delete();
     }
 }
