@@ -7,8 +7,14 @@
     
     <div class="row">
         <div class="col">
-            <h3 class="text-center">Welcome to Gurci Exam</h3>
-            <h5 class="text-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt repellendus vitae, repudiandae voluptas non iure provident consequatur optio, minus soluta blanditiis deserunt sapiente tempore libero error eum distinctio nemo! Nobis?</h5>
+            <h1 class="text-center">Welcome to Gurci Exam</h1>
+            @if (session('session_login'))
+                <h3 class="text-center mt-5">SUDAH LOGIN dengan {{session('data')['email']}} 🔥🔥</h3>
+            @else
+                <h3 class="text-center mt-5">LOGIN DULU NGAB!!</h3>
+
+                <h4 class="text-center mt-5"> Di sidenav kiri paling bawah yak... 🙂🙂</h4>
+            @endif
         </div>
     </div>
 </div>

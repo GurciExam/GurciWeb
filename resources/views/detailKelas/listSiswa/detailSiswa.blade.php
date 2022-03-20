@@ -1,18 +1,18 @@
 <div class="container-fluid">
     <div class="boxIsi p-3" style="border: solid 1px black">
         <div class="row">
-          <div class="col-4">
+          <div class="col-sm-4">
               <h5>Nama : {{$siswa['namaSiswa']}}</h5>
           </div>
-          <div class="col-4">
+          <div class="col-sm-4">
               <h5>NIS : {{$siswa['nis']}}</h5>
               <h5>Jenis Kelamin : {{$siswa['jenisKelamin']}}</h5>
           </div>
-          <div class="col-4">
+          <div class="col-sm-4">
               <h5>Tanggal Lahir : {{date('d-m-Y', strtotime($siswa->tanggalLahir))}}</h5>
               <h5>Alamat : {{$siswa['alamat']}}</h5>
           </div>
-          <div class="col-4">
+          <div class="col-sm-4">
             <div class="btn-group">
               <button type="button" class="btn dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">

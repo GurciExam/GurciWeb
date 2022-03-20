@@ -1,19 +1,19 @@
 <div class="container-fluid">
     <div class="boxIsi p-3 mb-5" style="border: solid 1px black">
         <div class="row">
-            <div class="col-4">
+            <div class="col-sm-4">
                 <h5>Nama : {{$ujian['namaUjian']}}</h5>
             </div>
-            <div class="col-4">
+            <div class="col-sm-4">
                 <h5>Janis : {{$ujian['jenisUjian']}}</h5>
             </div>
-            <div class="col-4">
+            <div class="col-sm-4">
                 <h5>Banyak Soal : {{$ujian['banyakSoal']}}</h5>
             </div>
-            <div class="col-4">
+            <div class="col-sm-4">
                 <h5>Kode Ujian : {{$ujian['kodeUjian']}}</h5>
             </div>
-            <div class="col-4">
+            <div class="col-sm-4">
                 <div class="btn-group">
                     <button type="button" class="btn dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
