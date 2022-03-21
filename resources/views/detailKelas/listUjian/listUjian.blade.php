@@ -2,7 +2,7 @@
     <h1 class="text-center">List Ujian</h1>
 </div>
 
-<div class="row mb-3">
+<div class="row mb-2">
     <div class="col-2">
         <!-- Button trigger modal -->
         <button type="button" id="buttonformtambahSoal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahUjianform">

@@ -1,7 +1,7 @@
 <div class="row">
     <h1 class="text-center mt-2">List Siswa</h1>
 </div>
-<div class="row">
+<div class="row mb-2">
   <div class="col-5">
     <!-- Button trigger tambah siswa excel -->
     <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahSiswa">
@@ -16,7 +16,7 @@
     <input class="form-control" type="search" placeholder="Search Siswa.." aria-label="Search" id="textSearchSiswa" name="textSearchSiswa">
   </div>
 </div>
-<div class="row mt-3">
+<div class="row">
   <div class="col-md-3">
     <div class="list-group" id="listSiswa">
       @foreach ($Siswa as $item)

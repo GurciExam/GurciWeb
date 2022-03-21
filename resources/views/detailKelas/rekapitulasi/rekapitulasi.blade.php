@@ -1,8 +1,8 @@
 <h1 class="text-center mt-2">Rekapitulasi Kelas</h1>
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col">
+    <div class="row mb-2">
+        <div class="col-3">
             <input class="form-control" type="search" placeholder="Search Siswa.." aria-label="Search" id="textSearchRekap" name="textSearchRekap">
         </div>
     </div>

@@ -5,14 +5,14 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3">
-            <div class="row mb-2">
+            <div class="row mb-1">
                 <div class="col">
                     <nav class="navbar navbar-light bg-light">
                         <h1 class="navbar-brand">List Kelas</h1>
                     </nav>
                 </div>
             </div>
-            <div class="row mb-3">
+            <div class="row mb-2">
                 <div class="col-3">
                     <button class="btn btn-outline-success" id="buttonTambahKelas" type="button" data-bs-toggle="modal" data-bs-target="#tambahKelas">Tambah</button>
                 </div>
