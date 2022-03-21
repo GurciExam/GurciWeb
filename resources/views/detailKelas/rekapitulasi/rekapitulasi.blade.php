@@ -3,6 +3,11 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
+            <input class="form-control" type="search" placeholder="Search Siswa.." aria-label="Search" id="textSearchRekap" name="textSearchRekap">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
             <table class="table table-bordered text-center">
                 <thead>
                     <tr>
@@ -16,13 +21,13 @@
                       <th scope="col">Nilai Akhir</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="listRekapSiswa">
                         <?php $i = 1; ?>
                         @foreach ($Siswa as $item)
                           
                             <tr>
                                 <th scope="row">{{$i}}</th>
-                                <td>{{$item['namaSiswa']}}</td>
+                                <td id="">{{$item['namaSiswa']}}</td>
                                 <td>{{$i*10}}</td>
                                 <td>{{$i*10}}</td>
                                 <td>{{$i*10}}</td>
@@ -40,3 +45,15 @@
         </div>
     </div>
 </div>
+
+<script>
+    // search Rekap Siswa
+    $("#textSearchRekap").on("keyup change", function() {
+        var value = $(this).val().toLowerCase();
+
+        $("#listRekapSiswa tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+
+    });
+</script>

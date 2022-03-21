@@ -3,17 +3,20 @@
 </div>
 
 <div class="row mb-3">
-    <div class="col">
+    <div class="col-2">
         <!-- Button trigger modal -->
         <button type="button" id="buttonformtambahSoal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahUjianform">
             Tambah Ujian
         </button> 
     </div>
+    <div class="col-3">
+        <input class="form-control" type="search" placeholder="Search Ujian.." aria-label="Search" id="textSearchUjian" name="textSearchUjian">
+      </div>
 </div>
 
 <div class="row">
     <div class="col-md-3">
-        <div class="list-group">
+        <div class="list-group" id="listUjian">
             @foreach ($Ujian as $item)
                 <button type="button" onclick="detailUjian({{$item['id']}})" class="list-group-item list-group-item-action active" aria-current="true">{{$item['namaUjian']}}</button>
 
@@ -119,6 +122,17 @@
 
 <script>
 
+    // search Ujian
+    $("#textSearchUjian").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+
+        $("#listUjian button").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+
+    });
+
+    // buka detail ujian
     function detailUjian(params) {
         $.get("{{ route('detailUjian') }}",{params:params},function (data) {
             $('#detailUjian').html(data);
@@ -127,6 +141,7 @@
 
     $(document).ready(function() {
         
+        // buka form input soal
         $('#fixbanyaksoal').on('click',function () {
             let bs = $('#banyakSoal').val();
             $.get("{{route('formSoal')}}",{bs:bs}, function(data){
@@ -134,6 +149,7 @@
             });
         })
 
+        // submit form ujian
         $('#submitFormSoal').on('click',function () {
             $konfirmasi = confirm('Yakin tambah Ujian?');
 

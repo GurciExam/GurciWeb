@@ -2,20 +2,23 @@
     <h1 class="text-center mt-2">List Siswa</h1>
 </div>
 <div class="row">
-  <div class="col">
+  <div class="col-5">
     <!-- Button trigger tambah siswa excel -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahSiswa">
+    <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahSiswa">
       Tambah Siswa excel
-    </button>
+    </a>
     <!-- Button trigger tambah siswa satuan -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahSiswaSatuan">
+    <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahSiswaSatuan">
       Tambah Siswa satuan
-    </button>
+    </a>
+  </div>
+  <div class="col-3">
+    <input class="form-control" type="search" placeholder="Search Siswa.." aria-label="Search" id="textSearchSiswa" name="textSearchSiswa">
   </div>
 </div>
 <div class="row mt-3">
   <div class="col-md-3">
-    <div class="list-group">
+    <div class="list-group" id="listSiswa">
       @foreach ($Siswa as $item)
         <button type="button" onclick="detailSiswa({{$item['id']}})" class="list-group-item list-group-item-action active" aria-current="true">
           {{$item['namaSiswa']}}
@@ -132,8 +135,17 @@
 
 
 <script>
+  // search Siswa
+  $("#textSearchSiswa").on("keyup change", function() {
+    var value = $(this).val().toLowerCase();
 
+    $("#listSiswa button").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+
+  });
   
+  // token untuk post di AJAX CSRF
   $.ajaxSetup({
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

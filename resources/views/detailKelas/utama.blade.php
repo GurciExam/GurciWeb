@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <h4>Detail kelas (id = {{$idKelas}})</h4>
+        <h4>Detail kelas ({{$kelas->namaKelas}})</h4>
     </div>
     <div class="row">
         <div class="col-12">

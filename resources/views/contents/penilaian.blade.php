@@ -16,15 +16,12 @@
                 <div class="col-3">
                     <button class="btn btn-outline-success" id="buttonTambahKelas" type="button" data-bs-toggle="modal" data-bs-target="#tambahKelas">Tambah</button>
                 </div>
-                <div class="col-5 offset-1">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                </div>
-                <div class="col-2">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                <div class="col-7 offset-1">
+                    <input class="form-control" type="search" placeholder="Search Kelas.." aria-label="Search" id="textSearchKelas" name="textSearchKelas">
                 </div>
             </div>
             <div class="row mb-3">
-                <div class="list-group">
+                <div class="list-group" id="listKelas">
 
                     @foreach ($kelas as $item)
                         <a href="#" onclick="bukaDetailKelas('{{$item['id']}}')" class="list-group-item list-group-item-action" aria-current="true">
@@ -140,6 +137,16 @@
 </div>
 
   <script>
+    // search kelas
+    $("#textSearchKelas").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+
+      $("#listKelas a").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+
+    });
+
     // passing data ke modal ubah
       $('.ubahKelasss').on('click', function () {
         $data = $(this).data('data');

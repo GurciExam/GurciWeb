@@ -51,6 +51,8 @@ class penilaianController extends Controller
     {
         $idKelas = $request->params;
 
+        $kelas = Kelas::find($idKelas);
+
         // tab siswa
         $Siswa = Siswa::where('kelas_id',$idKelas)->get();
 
@@ -60,7 +62,7 @@ class penilaianController extends Controller
         // tab rekapitulasi
         
 
-        return view ('detailKelas.utama',compact('Ujian','idKelas','Siswa'));
+        return view ('detailKelas.utama',compact('Ujian','idKelas','Siswa','kelas'));
     }
 
     
