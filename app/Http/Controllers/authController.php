@@ -16,7 +16,7 @@ class authController extends Controller
     {
         $data = User::where('email',$request->email)->first();
         if($data){
-            if(\Hash::check($request->password,$data->password)){
+            if(password_verify($request->password,$data->password)){
                 session(['session_login' => true]);
                 $request->session()->put('data',$request->input());
                 Session::put('user_id',$data['id']);
